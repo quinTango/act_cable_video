@@ -12,5 +12,6 @@ class RoomChannel < ApplicationCable::Channel
     return if !user || user.role == "admin"
     user.ticket = Ticket.create(status: Ticket::CREATED) unless user.ticket
     TestDriveRequestJob.perform_later(user)
+    #lo
   end
 end

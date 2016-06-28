@@ -8,6 +8,6 @@
 (function() {
   this.App || (this.App = {});
 
-  App.cable = ActionCable.createConsumer("ws://ace36e51.ngrok.io/cable");
+  App.cable = ActionCable.createConsumer("/cable");
 
 }).call(this);
