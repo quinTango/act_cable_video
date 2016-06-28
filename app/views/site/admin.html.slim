@@ -1,0 +1,5 @@
+h1 = "Admin"
+
+ul
+- @active_users.each do |user|
+  = render("active_user", user: user)

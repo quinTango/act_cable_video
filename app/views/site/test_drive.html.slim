@@ -1,0 +1,5 @@
+h1 = "Hola #{@user.name}"
+= button_tag("Solicitar test drive", id: "requestButton", data: { id: @user.id })
+= hidden_field_tag(:current_user, @user.id)
+
+.user-video#remotesVideos
