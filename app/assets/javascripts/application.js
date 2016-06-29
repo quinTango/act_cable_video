@@ -20,6 +20,7 @@ var webrtc;
 $(document).ready(function(){
   $(document).on('click', '#requestButton', function(event) {
     App.room.join($("#current_user").val());
+    $(this).html("Waiting...");
     webrtc = new SimpleWebRTC({
       remoteVideosEl: 'remotesVideos',
       autoRequestMedia: true
