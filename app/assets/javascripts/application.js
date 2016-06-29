@@ -16,32 +16,42 @@
 //= require_tree .
 
 // Use a variable in the same scope of both events:
+var webrtc;
 $(document).ready(function(){
   $(document).on('click', '#requestButton', function(event) {
-    console.log(" - request");
     App.room.join($("#current_user").val());
-
-    var webrtc;
-    webrtc = webrtc || new SimpleWebRTC({
+    webrtc = new SimpleWebRTC({
       remoteVideosEl: 'remotesVideos',
       autoRequestMedia: true
     });
     webrtc.on('readyToCall', function () {
-      webrtc.joinRoom('acidroom');
+      console.log('acidroom' + $("#current_user").val());
+      webrtc.joinRoom('acidroom' + $("#current_user").val());
     });
   });
 
   $(document).on('click', '#startButton', function(event) {
-    console.log(" - start");
-    //App.room.start($(this).data("user-id"));
-
-    var webrtc;
-    webrtc = webrtc || new SimpleWebRTC({
+    var $that = $(this);
+    webrtc = new SimpleWebRTC({
       localVideoEl: 'localVideo',
       autoRequestMedia: true
     });
     webrtc.on('readyToCall', function () {
-      webrtc.joinRoom('acidroom');
+      console.log('acidroom' + $that.data("user-id"));
+      webrtc.joinRoom('acidroom' + $that.data("user-id"));
     });
   })
+
+  $(document).on('click', '#stopButton', function(event) {
+    webrtc = new SimpleWebRTC({
+      localVideoEl: 'localVideo',
+      autoRequestMedia: true
+    });
+  })
+
+  $(".pokemon-img").on('click', function(){
+    console.log($(this).attr("src"));
+    App.room.sendImg($(this).attr("src"));
+  });
+
 });

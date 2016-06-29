@@ -1,5 +1,8 @@
 h1 = "Hola #{@user.name}"
+h4 = link_to("log_out", logout_path ,method: :post)
 = button_tag("Solicitar test drive", id: "requestButton", data: { id: @user.id })
 = hidden_field_tag(:current_user, @user.id)
 
-.user-video#remotesVideos
+.media-container
+  .user-video#remotesVideos
+  img#theImg.remoteImg

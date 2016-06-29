@@ -3,3 +3,12 @@ h1 = "Admin"
 ul
 - @active_users.each do |user|
   = render("active_user", user: user)
+
+#pokemons
+
+#theImg
+
+javascript:
+  for (var i = 1; i < 5; i++) {
+    $("#pokemons").append("<a><img class='pokemon-img' src='http://pokeapi.co/media/img/" + i + ".png' data-url='http://pokeapi.co/media/img/" + i + ".png'/></a>");
+  }

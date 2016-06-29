@@ -14,4 +14,8 @@ class RoomChannel < ApplicationCable::Channel
     TestDriveRequestJob.perform_later(user)
     #lo
   end
+
+  def sendImg(data)
+    ActionCable.server.broadcast("room_channel", img: data["img"])
+  end
 end

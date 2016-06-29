@@ -6,7 +6,13 @@ class SiteController < ApplicationController
   def login
     user = params[:name] == "quino" ? User.first : User.create(name: params[:name], role: "viewer")
     session[:user_id] = user.id
-    redirect_to(test_drive_path)
+    path = (user.role == "admin" ? admin_path : test_drive_path)
+    redirect_to(path)
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
   end
 
   def test_drive
