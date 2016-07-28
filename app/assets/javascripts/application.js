@@ -23,11 +23,12 @@ $(document).ready(function(){
     $(this).html("Waiting...");
     webrtc = new SimpleWebRTC({
       remoteVideosEl: 'remotesVideos',
-      autoRequestMedia: true
+      autoRequestMedia: true,
+      url: 'http://localhost:8888'
     });
     webrtc.on('readyToCall', function () {
       console.log('acidroom' + $("#current_user").val());
-      webrtc.joinRoom('acidroom' + $("#current_user").val());
+      webrtc.joinRoom('acidroom');
     });
   });
 
@@ -35,18 +36,20 @@ $(document).ready(function(){
     var $that = $(this);
     webrtc = new SimpleWebRTC({
       localVideoEl: 'localVideo',
-      autoRequestMedia: true
+      autoRequestMedia: true,
+      url: 'http://localhost:8888'
     });
     webrtc.on('readyToCall', function () {
       console.log('acidroom' + $that.data("user-id"));
-      webrtc.joinRoom('acidroom' + $that.data("user-id"));
+      webrtc.joinRoom('acidroom');
     });
   })
 
   $(document).on('click', '#stopButton', function(event) {
     webrtc = new SimpleWebRTC({
       localVideoEl: 'localVideo',
-      autoRequestMedia: true
+      autoRequestMedia: true,
+      url: 'http://localhost:8888'
     });
   })
 
